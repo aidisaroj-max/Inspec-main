@@ -69,12 +69,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("emailNotifications")}
-              className={`w-16 h-7 border-2 rounded-xl relative transition-colors ${
+              className={`w-16 h-5 border-2 rounded-xl relative transition-colors ${
                 settings.emailNotifications ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.emailNotifications ? "right-1" : "left-1"
                 }`}
               ></div>
@@ -89,12 +89,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("pushNotifications")}
-              className={`w-16 h-7 border-2 relative rounded-xl transition-colors ${
+              className={`w-16 h-5 border-2 relative rounded-xl transition-colors ${
                 settings.pushNotifications ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.pushNotifications ? "right-1" : "left-1"
                 }`}
               ></div>
@@ -109,12 +109,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("weeklyReports")}
-              className={`w-16 h-7 border-2 rounded-xl relative transition-colors ${
+              className={`w-16 h-5 border-2 rounded-xl relative transition-colors ${
                 settings.weeklyReports ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.weeklyReports ? "right-1" : "left-1"
                 }`}
               ></div>
@@ -187,12 +187,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("autoBackup")}
-              className={`w-16 h-7 border-2 rounded-xl relative transition-colors ${
+              className={`w-16 h-5 border-2 rounded-xl relative transition-colors ${
                 settings.autoBackup ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.autoBackup ? "right-1" : "left-1"
                 }`}
               ></div>
@@ -233,12 +233,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("twoFactorAuth")}
-              className={`w-16 h-7 border-2 rounded-xl relative transition-colors ${
+              className={`w-16 h-5 border-2 rounded-xl relative transition-colors ${
                 settings.twoFactorAuth ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.twoFactorAuth ? "right-1" : "left-1"
                 }`}
               ></div>
@@ -253,12 +253,12 @@ export default function Settings() {
             </div>
             <button
               onClick={() => handleToggle("allowAPIAccess")}
-              className={`w-16 h-7 border-2 rounded-xl relative transition-colors ${
+              className={`w-16 h-5 border-2 rounded-xl relative transition-colors ${
                 settings.allowAPIAccess ? "bg-green-500" : "bg-gray-300"
               }`}
             >
               <div
-                className={`absolute top-0 w-7 h-6 bg-white border-2 rounded-xl transition-all ${
+                className={`absolute top-0 w-6 h-5 bg-white border-2 rounded-xl transition-all ${
                   settings.allowAPIAccess ? "right-1" : "left-1"
                 }`}
               ></div>

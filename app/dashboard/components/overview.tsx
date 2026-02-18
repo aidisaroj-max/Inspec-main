@@ -1,6 +1,6 @@
 export default function Overview() {
   const stats = [
-    { title: "Total Users", value: "48" },
+    { title: "User", value: "Saroj" },
     { title: "Active Sessions", value: "12" },
     { title: "Security Alerts", value: "5" },
     { title: "System Status", value: "Stable" },
