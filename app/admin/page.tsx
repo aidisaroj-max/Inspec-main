@@ -1,15 +1,26 @@
 "use client"
 import {Navbar,Footer,Copyright} from "../components/index";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { NextResponse } from "next/server";
 export default function Admin() {
   const router = useRouter();
+  const[buttonDisabled,setButtonDisabled]=React.useState(false);
   const [formData, setFormData] = useState({
      username: "",
       password: "",
   });
+  useEffect(()=>{
+    if(formData.username.length>0 && formData.password.length>0)
+    {
+      setButtonDisabled(false);
+    }
+    else
+    {
+       setButtonDisabled(true);
+    }
+  },[formData]);
 
   const handleSubmit = async (e) => {
       e.preventDefault();
@@ -38,7 +49,8 @@ export default function Admin() {
         //localStorage.setItem('user', JSON.stringify(reqBody.data.user));
   
         // Redirect to dashboard
-        router.push('/dashboard');
+        console.log("Login success")
+        router.push("/dashboard");
 
       } catch (error: any) {
         return NextResponse.json({error:"Network error"},{status:500})
@@ -99,7 +111,8 @@ export default function Admin() {
           </p>
 
           {/* Sign In */}
-          <button className="w-full bg-black text-white py-2 mt-4 hover:bg-gray-800">
+          <button className="w-full bg-black text-white py-2 mt-4 hover:bg-gray-800"
+          disabled={buttonDisabled}>
             Sign In
           </button>
         </div>
