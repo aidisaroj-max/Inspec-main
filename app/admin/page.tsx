@@ -1,18 +1,16 @@
 "use client"
 import {Navbar,Footer,Copyright} from "../components/index";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { NextResponse } from "next/server";
 export default function Admin() {
   const router = useRouter();
   const[buttonDisabled,setButtonDisabled]=React.useState(false);
-  const [formData, setFormData] = useState({
-     username: "",
-      password: "",
-  });
+  const [userName, setUserName] = useState("");
+  const[passWord,setPassWord]=useState("");
   useEffect(()=>{
-    if(formData.username.length>0 && formData.password.length>0)
+    if(userName.length>0 && passWord.length>0)
     {
       setButtonDisabled(false);
     }
@@ -20,9 +18,9 @@ export default function Admin() {
     {
        setButtonDisabled(true);
     }
-  },[formData]);
+  });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       try 
       {
@@ -30,7 +28,7 @@ export default function Admin() {
         //const {username, password} = reqBody;
 
         //check username
-        const user =true // await User.findOne({username})
+        const user =true // await User.findOne({userName})
         if(!user)
         {
           return NextResponse.json({error: "user does not exist"},{status:400})
@@ -38,7 +36,7 @@ export default function Admin() {
         }
 
         //check password
-        const validPassword =true //await bcryptjs.compare(password,user.password)
+        const validPassword =true //await bcryptjs.compare(passWord,user.password)
         if(!validPassword)
         {
           return NextResponse.json({error:"Invalid password"},{status:400})
@@ -53,7 +51,7 @@ export default function Admin() {
         router.push("/dashboard");
 
       } catch (error: any) {
-        return NextResponse.json({error:"Network error"},{status:500})
+        return NextResponse.json({error:error.message},{status:500})
       }
     };
     return (
@@ -66,7 +64,7 @@ export default function Admin() {
           {/* Icon */}
           <div className="flex justify-center mb-6">
             <div className="bg-black text-white rounded-full w-12 h-12 flex items-center justify-center text-xl">
-              <img rel="icon" type="image/x-icon" src="favicon.ico" alt="Inspec Logo" className="w-8 h-8" />
+              <img rel="icon" src="favicon.ico" alt="Inspec Logo" className="w-8 h-8" />
             </div>
           </div>
 
@@ -76,24 +74,25 @@ export default function Admin() {
             className="w-full p-2 mb-3 border border-gray-300"
             id="username"
             type="text"
-            value={formData.username}
+            value={userName}
             placeholder="Username"
-            onChange={(e)=> setFormData({formData,username : e.target.value})}
+            onChange={(e)=> setUserName(e.target.value)}
           />
 
           <input
             className="w-full p-2 mb-4 border border-gray-300"
             id="password"
              type="password"
-             value={formData.password}
+             value={passWord}
             placeholder="Password"
-            onChange={(e)=> setFormData({formData,password : e.target.value})}
+            onChange={(e)=> setPassWord(e.target.value)}
 
           />
 
           {/* Login Button */}
           <button className="w-full bg-black text-white py-2 hover:bg-gray-800"
           type="submit"
+          disabled={buttonDisabled}
           >
             Login
           </button>
@@ -112,7 +111,7 @@ export default function Admin() {
 
           {/* Sign In */}
           <button className="w-full bg-black text-white py-2 mt-4 hover:bg-gray-800"
-          disabled={buttonDisabled}>
+          >
             Sign In
           </button>
         </div>
